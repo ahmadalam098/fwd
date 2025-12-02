@@ -1,12 +1,22 @@
 <svg width="49" height="99" viewBox="0 0 49 99" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#818cf8"/>
-      <stop offset="100%" style="stop-color:#6366f1"/>
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="50%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
     </linearGradient>
-  </defs><!-- Compass circle -->
-  <circle cx="24.5" cy="42" r="22" fill="none" stroke="url(#grad)" stroke-width="2.5"/>
-  <circle cx="24.5" cy="42" r="5" fill="url(#grad)"/><!-- Direction arrow -->
-  <path d="M24.5 14 L29 30 L24.5 26 L20 30 Z" fill="url(#grad)"/><!-- PP Text -->
-  <text x="24.5" y="82" font-family="system-ui, sans-serif" font-size="14" fill="url(#grad)" text-anchor="middle" font-weight="700">PP</text>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs><!-- Outer compass circle -->
+  <circle cx="24.5" cy="42" r="22" fill="none" stroke="url(#grad)" stroke-width="2.5" filter="url(#glow)"/><!-- Inner ring -->
+  <circle cx="24.5" cy="42" r="14" fill="none" stroke="url(#grad)" stroke-width="1.5" opacity="0.6"/><!-- Center dot -->
+  <circle cx="24.5" cy="42" r="5" fill="url(#grad)" filter="url(#glow)"/><!-- Direction arrow (North) -->
+  <path d="M24.5 14 L29 30 L24.5 26 L20 30 Z" fill="url(#grad)" filter="url(#glow)"/><!-- South arrow -->
+  <path d="M24.5 70 L29 54 L24.5 58 L20 54 Z" fill="url(#grad)" opacity="0.5"/><!-- PP Text with glow -->
+  <text x="24.5" y="85" font-family="system-ui, sans-serif" font-size="14" fill="url(#grad)" text-anchor="middle" font-weight="700" filter="url(#glow)">PP</text>
 </svg>

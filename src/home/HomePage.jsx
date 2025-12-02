@@ -7,15 +7,15 @@ function HomePage() {
       <div className="hero-section">
         <h1>🚀 ProjectPilot</h1>
         <p>
-          Manage your projects with ease. Track budgets, monitor progress, 
-          and keep your team aligned with our intuitive project management platform.
+          Your ultimate project management companion. Track progress, manage budgets, 
+          and deliver exceptional results with our powerful yet intuitive platform.
         </p>
         <div className="cta-buttons">
           <Link to="/projects" className="button primary">
-            View Projects
+            ✨ Explore Projects
           </Link>
           <a href="#features" className="button bordered">
-            Learn More
+            🔍 Discover Features
           </a>
         </div>
       </div>
@@ -44,23 +44,23 @@ function HomePage() {
       <div id="features" className="features-grid">
         <div className="feature-card">
           <div className="icon">📊</div>
-          <h3>Budget Tracking</h3>
-          <p>Keep track of your project budgets in real-time with detailed analytics and reports.</p>
+          <h3>Smart Analytics</h3>
+          <p>Real-time insights and beautiful dashboards to track your project performance at a glance.</p>
         </div>
         <div className="feature-card">
           <div className="icon">⚡</div>
-          <h3>Fast & Efficient</h3>
-          <p>Lightning-fast interface designed to help you manage projects without any delays.</p>
+          <h3>Lightning Fast</h3>
+          <p>Blazing fast interface powered by modern technology for seamless project management.</p>
         </div>
         <div className="feature-card">
           <div className="icon">🔒</div>
-          <h3>Secure & Reliable</h3>
-          <p>Your data is protected with enterprise-grade security and regular backups.</p>
+          <h3>Bank-Level Security</h3>
+          <p>Enterprise-grade encryption and security protocols to keep your data safe and protected.</p>
         </div>
         <div className="feature-card">
           <div className="icon">🤝</div>
           <h3>Team Collaboration</h3>
-          <p>Work together seamlessly with your team members on shared projects.</p>
+          <p>Real-time collaboration tools to keep your team aligned and projects on track.</p>
         </div>
       </div>
     </div>

@@ -37,14 +37,15 @@ function ProjectCard(props) {
             marginBottom: '0.5rem'
           }}>
             <span className="budget-display" style={{
-              background: 'linear-gradient(135deg, #10b981, #059669)',
+              background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
               color: 'white',
               padding: '0.35rem 0.75rem',
               borderRadius: '0.5rem',
               fontSize: '0.85rem',
-              fontWeight: '600'
+              fontWeight: '600',
+              boxShadow: '0 2px 10px rgba(139, 92, 246, 0.3)'
             }}>
-              {formatBudget(project.budget)}
+              💰 {formatBudget(project.budget)}
             </span>
             <span style={{
               display: 'inline-block',
@@ -53,10 +54,11 @@ function ProjectCard(props) {
               fontSize: '0.7rem',
               fontWeight: '500',
               textTransform: 'uppercase',
-              background: project.isActive ? 'rgba(16, 185, 129, 0.2)' : 'rgba(100, 116, 139, 0.2)',
-              color: project.isActive ? '#10b981' : '#64748b'
+              background: project.isActive ? 'rgba(139, 92, 246, 0.2)' : 'rgba(100, 116, 139, 0.2)',
+              color: project.isActive ? '#a78bfa' : '#64748b',
+              border: project.isActive ? '1px solid rgba(139, 92, 246, 0.3)' : 'none'
             }}>
-              {project.isActive ? '● Active' : '○ Inactive'}
+              {project.isActive ? '✨ Active' : '○ Inactive'}
             </span>
           </div>
         </Link>
@@ -67,7 +69,7 @@ function ProjectCard(props) {
           }}
         >
           <span className="icon-edit"></span>
-          Edit Project
+          ✏️ Edit Project
         </button>
       </section>
     </div>
