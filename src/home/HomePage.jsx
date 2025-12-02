@@ -5,17 +5,17 @@ function HomePage() {
     <div className="home-page">
       {/* Hero Section */}
       <div className="hero-section">
-        <h1>🚀 ProjectPilot</h1>
+        <h1>🌊 ProjectPilot</h1>
         <p>
-          Your ultimate project management companion. Track progress, manage budgets, 
-          and deliver exceptional results with our powerful yet intuitive platform.
+          Navigate your projects with confidence. A modern, intuitive platform 
+          designed to streamline your workflow and boost team productivity.
         </p>
         <div className="cta-buttons">
           <Link to="/projects" className="button primary">
-            ✨ Explore Projects
+            🎯 View Projects
           </Link>
           <a href="#features" className="button bordered">
-            🔍 Discover Features
+            💡 Learn More
           </a>
         </div>
       </div>
@@ -24,15 +24,15 @@ function HomePage() {
       <div className="stats-section">
         <div className="stat-item">
           <div className="number">50+</div>
-          <div className="label">Active Projects</div>
+          <div className="label">Projects</div>
         </div>
         <div className="stat-item">
           <div className="number">$2.5M</div>
-          <div className="label">Total Budget</div>
+          <div className="label">Budget</div>
         </div>
         <div className="stat-item">
           <div className="number">98%</div>
-          <div className="label">Success Rate</div>
+          <div className="label">Success</div>
         </div>
         <div className="stat-item">
           <div className="number">24/7</div>
@@ -44,23 +44,23 @@ function HomePage() {
       <div id="features" className="features-grid">
         <div className="feature-card">
           <div className="icon">📊</div>
-          <h3>Smart Analytics</h3>
-          <p>Real-time insights and beautiful dashboards to track your project performance at a glance.</p>
+          <h3>Real-time Analytics</h3>
+          <p>Track project metrics and budgets with live dashboards and instant insights.</p>
         </div>
         <div className="feature-card">
           <div className="icon">⚡</div>
-          <h3>Lightning Fast</h3>
-          <p>Blazing fast interface powered by modern technology for seamless project management.</p>
+          <h3>Blazing Fast</h3>
+          <p>Built with cutting-edge technology for a smooth, responsive experience.</p>
         </div>
         <div className="feature-card">
-          <div className="icon">🔒</div>
-          <h3>Bank-Level Security</h3>
-          <p>Enterprise-grade encryption and security protocols to keep your data safe and protected.</p>
+          <div className="icon">🔐</div>
+          <h3>Enterprise Security</h3>
+          <p>Your data is protected with industry-leading encryption standards.</p>
         </div>
         <div className="feature-card">
-          <div className="icon">🤝</div>
-          <h3>Team Collaboration</h3>
-          <p>Real-time collaboration tools to keep your team aligned and projects on track.</p>
+          <div className="icon">👥</div>
+          <h3>Team Sync</h3>
+          <p>Collaborate seamlessly with real-time updates and shared workspaces.</p>
         </div>
       </div>
     </div>

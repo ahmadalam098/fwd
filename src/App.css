@@ -1,10 +1,10 @@
-/* 🚀 App-specific Enhanced Styles */
+/* 🌊 Ocean Breeze App Styles */
 
-/* ✨ Hero Section - Stunning */
+/* ✨ Hero Section - Ocean Waves */
 .hero-section {
   text-align: center;
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.05));
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 100%);
   border-radius: var(--radius-2xl);
   margin-bottom: 3rem;
   position: relative;
@@ -15,19 +15,19 @@
 .hero-section::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: 
-    radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(236, 72, 153, 0.2) 0%, transparent 40%);
-  animation: aurora 15s ease-in-out infinite;
+    radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+  animation: oceanFlow 10s ease-in-out infinite;
 }
 
-@keyframes aurora {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.2); }
+@keyframes oceanFlow {
+  0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(3deg); }
 }
 
 .hero-section::after {
@@ -44,19 +44,21 @@
 .hero-section h1 {
   position: relative;
   z-index: 1;
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
-  animation: float 6s ease-in-out infinite;
+  animation: wave 4s ease-in-out infinite;
+  letter-spacing: -0.02em;
 }
 
 .hero-section p {
   position: relative;
   z-index: 1;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  max-width: 650px;
+  max-width: 580px;
   margin: 0 auto 2.5rem;
   line-height: 1.8;
+  font-weight: 400;
 }
 
 .hero-section .cta-buttons {
@@ -111,15 +113,22 @@
 }
 
 .feature-card .icon {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  display: block;
-  animation: float 4s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.1));
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  animation: wave 5s ease-in-out infinite;
 }
 
-.feature-card:nth-child(2) .icon { animation-delay: 0.5s; }
-.feature-card:nth-child(3) .icon { animation-delay: 1s; }
-.feature-card:nth-child(4) .icon { animation-delay: 1.5s; }
+.feature-card:nth-child(2) .icon { animation-delay: 0.4s; }
+.feature-card:nth-child(3) .icon { animation-delay: 0.8s; }
+.feature-card:nth-child(4) .icon { animation-delay: 1.2s; }
 
 .feature-card h3 {
   color: var(--text-primary);
@@ -152,15 +161,15 @@
 }
 
 .stat-item .number {
-  font-size: 3.5rem;
+  font-size: 2.75rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  background: linear-gradient(135deg, var(--primary-light), var(--gradient-mid));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1;
+  line-height: 1.2;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 40px var(--primary-glow);
+  filter: drop-shadow(0 0 25px var(--primary-glow));
 }
 
 .stat-item .label {

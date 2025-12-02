@@ -16,7 +16,7 @@ function App() {
             🏠 Home
           </NavLink>
           <NavLink to="/projects" className="button rounded">
-            🚀 Projects
+            📂 Projects
           </NavLink>
         </nav>
         <div style={{ 
@@ -25,20 +25,20 @@ function App() {
           gap: '0.5rem',
           color: 'var(--text-muted)',
           fontSize: '0.85rem',
-          background: 'rgba(139, 92, 246, 0.1)',
+          background: 'rgba(6, 182, 212, 0.1)',
           padding: '0.5rem 1rem',
           borderRadius: '2rem',
-          border: '1px solid rgba(139, 92, 246, 0.2)'
+          border: '1px solid rgba(6, 182, 212, 0.2)'
         }}>
           <span style={{
             width: '8px',
             height: '8px',
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+            background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
             animation: 'pulse 2s infinite',
-            boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)'
+            boxShadow: '0 0 12px rgba(6, 182, 212, 0.6)'
           }}></span>
-          ✨ Online
+          🌊 Online
         </div>
       </header>
       <div className="container">

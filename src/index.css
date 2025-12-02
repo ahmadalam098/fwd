@@ -1,45 +1,45 @@
-/* 🎨 Fresh Modern Theme for ProjectPilot */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* 🌊 Ocean Breeze Theme for ProjectPilot */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* 🌈 New Vibrant Color Palette */
-  --primary: #8b5cf6;
-  --primary-dark: #7c3aed;
-  --primary-light: #a78bfa;
-  --primary-glow: rgba(139, 92, 246, 0.4);
+  /* 🌊 Ocean Color Palette */
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #22d3ee;
+  --primary-glow: rgba(6, 182, 212, 0.4);
   
-  /* Gradient Colors */
-  --gradient-start: #8b5cf6;
-  --gradient-mid: #ec4899;
-  --gradient-end: #f97316;
+  /* Gradient Colors - Ocean to Sky */
+  --gradient-start: #06b6d4;
+  --gradient-mid: #3b82f6;
+  --gradient-end: #8b5cf6;
   
   /* Accent Colors */
-  --accent: #14b8a6;
-  --accent-light: #5eead4;
-  --success: #22c55e;
-  --warning: #eab308;
-  --error: #f43f5e;
+  --accent: #10b981;
+  --accent-light: #34d399;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
   
-  /* Background - Elegant Dark */
-  --bg-primary: #0c0a1d;
-  --bg-secondary: #1a1730;
-  --bg-tertiary: #2d2a45;
-  --bg-card: linear-gradient(145deg, #1a1730, #0c0a1d);
-  --bg-glass: rgba(26, 23, 48, 0.8);
+  /* Background - Deep Ocean */
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --bg-card: linear-gradient(165deg, #0f172a 0%, #020617 100%);
+  --bg-glass: rgba(15, 23, 42, 0.9);
   
   /* Text Colors */
-  --text-primary: #faf5ff;
-  --text-secondary: #c4b5fd;
-  --text-muted: #8b7fcf;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
   
   /* Border & Effects */
-  --border-color: rgba(139, 92, 246, 0.2);
-  --border-glow: rgba(139, 92, 246, 0.5);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px var(--primary-glow);
-  --shadow-neon: 0 0 20px var(--primary), 0 0 40px var(--primary-glow);
+  --border-color: rgba(6, 182, 212, 0.2);
+  --border-glow: rgba(6, 182, 212, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 50px var(--primary-glow);
+  --shadow-neon: 0 0 30px var(--primary), 0 0 60px var(--primary-glow);
   
   /* Spacing */
   --radius-sm: 0.5rem;
@@ -66,11 +66,12 @@ html {
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-primary);
   background-image: 
-    radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+    radial-gradient(ellipse at top, rgba(6, 182, 212, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
   color: var(--text-primary);
   line-height: 1.7;
   min-height: 100vh;
@@ -523,14 +524,34 @@ mark.active, .mark.active {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--primary), var(--gradient-mid));
   border-radius: var(--radius-lg);
+  border: 2px solid var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--gradient-mid), var(--gradient-end));
+  background: linear-gradient(180deg, var(--primary-light), var(--gradient-end));
 }
 
 /* ✨ Selection */
 ::selection {
   background: var(--primary);
   color: white;
+}
+
+/* 🌊 Wave Animation */
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-8px); }
+  75% { transform: translateY(4px); }
+}
+
+/* 💎 Ripple Effect */
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* 🔮 Breathing Glow */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 20px var(--primary-glow); }
+  50% { box-shadow: 0 0 40px var(--primary-glow), 0 0 60px rgba(6, 182, 212, 0.2); }
 }

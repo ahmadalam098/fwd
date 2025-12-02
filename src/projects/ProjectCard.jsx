@@ -37,28 +37,28 @@ function ProjectCard(props) {
             marginBottom: '0.5rem'
           }}>
             <span className="budget-display" style={{
-              background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+              background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
               color: 'white',
-              padding: '0.35rem 0.75rem',
-              borderRadius: '0.5rem',
+              padding: '0.4rem 0.85rem',
+              borderRadius: '0.75rem',
               fontSize: '0.85rem',
               fontWeight: '600',
-              boxShadow: '0 2px 10px rgba(139, 92, 246, 0.3)'
+              boxShadow: '0 4px 15px rgba(6, 182, 212, 0.3)'
             }}>
-              💰 {formatBudget(project.budget)}
+              💎 {formatBudget(project.budget)}
             </span>
             <span style={{
               display: 'inline-block',
-              padding: '0.25rem 0.5rem',
+              padding: '0.3rem 0.6rem',
               borderRadius: '0.5rem',
               fontSize: '0.7rem',
-              fontWeight: '500',
+              fontWeight: '600',
               textTransform: 'uppercase',
-              background: project.isActive ? 'rgba(139, 92, 246, 0.2)' : 'rgba(100, 116, 139, 0.2)',
-              color: project.isActive ? '#a78bfa' : '#64748b',
-              border: project.isActive ? '1px solid rgba(139, 92, 246, 0.3)' : 'none'
+              background: project.isActive ? 'rgba(6, 182, 212, 0.15)' : 'rgba(100, 116, 139, 0.2)',
+              color: project.isActive ? '#22d3ee' : '#64748b',
+              border: project.isActive ? '1px solid rgba(6, 182, 212, 0.3)' : 'none'
             }}>
-              {project.isActive ? '✨ Active' : '○ Inactive'}
+              {project.isActive ? '● Live' : '○ Paused'}
             </span>
           </div>
         </Link>
@@ -69,7 +69,7 @@ function ProjectCard(props) {
           }}
         >
           <span className="icon-edit"></span>
-          ✏️ Edit Project
+          ⚙️ Edit
         </button>
       </section>
     </div>
