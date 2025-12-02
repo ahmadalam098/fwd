@@ -16,35 +16,39 @@ const STATIC_PROJECTS = [
   { id: 12, name: "Lopez Consulting", description: "Switchable demand-driven interface.", imageUrl: "https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=500&h=300&fit=crop", contractTypeId: 6, contractSignedOn: "2020-07-10T13:20:00.000Z", budget: 41200, isActive: true },
 ];
 
-// Check if we're in development mode with API available
-const isDevelopment = import.meta.env.DEV;
 const baseUrl = 'http://localhost:4000';
 const url = `${baseUrl}/projects`;
 
-function translateStatusToErrorMessage(status) {
-  switch (status) {
-    case 401:
-      return 'Please login again.';
-    case 403:
-      return 'You do not have permission to view the project(s).';
-    default:
-      return 'There was an error retrieving the project(s). Please try again.';
-  }
+// Helper to get static projects with simulated delay
+function getStaticProjects(page = 1, limit = 20) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const start = (page - 1) * limit;
+      const end = start + limit;
+      const paginatedProjects = STATIC_PROJECTS.slice(start, end).map(p => new Project(p));
+      resolve(paginatedProjects);
+    }, 300);
+  });
+}
+
+function findStaticProject(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const project = STATIC_PROJECTS.find(p => p.id === parseInt(id));
+      if (project) {
+        resolve(new Project(project));
+      } else {
+        reject(new Error('Project not found'));
+      }
+    }, 300);
+  });
 }
 
 function checkStatus(response) {
   if (response.ok) {
     return response;
   } else {
-    const httpErrorInfo = {
-      status: response.status,
-      statusText: response.statusText,
-      url: response.url,
-    };
-    console.log(`log server http error: ${JSON.stringify(httpErrorInfo)}`);
-
-    let errorMessage = translateStatusToErrorMessage(httpErrorInfo.status);
-    throw new Error(errorMessage);
+    throw new Error('API request failed');
   }
 }
 
@@ -52,99 +56,50 @@ function parseJSON(response) {
   return response.json();
 }
 
-// eslint-disable-next-line
-function delay(ms) {
-  return function (x) {
-    return new Promise((resolve) => setTimeout(() => resolve(x), ms));
-  };
-}
-
 const projectAPI = {
-  get(page = 1, limit = 20) {
-    // In production, use static data
-    if (!isDevelopment) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const start = (page - 1) * limit;
-          const end = start + limit;
-          const paginatedProjects = STATIC_PROJECTS.slice(start, end).map(p => new Project(p));
-          resolve(paginatedProjects);
-        }, 300);
-      });
+  async get(page = 1, limit = 20) {
+    // First try the API (for local development)
+    try {
+      const response = await fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`);
+      if (!response.ok) throw new Error('API not available');
+      const projects = await response.json();
+      return projects.map((p) => new Project(p));
+    } catch (error) {
+      // Fallback to static data (for Vercel/production)
+      console.log('Using static data:', error.message);
+      return getStaticProjects(page, limit);
     }
-
-    // In development, try to use the API
-    return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
-      .then(delay(600))
-      .then(checkStatus)
-      .then(parseJSON)
-      .then((projects) => {
-        return projects.map((p) => {
-          return new Project(p);
-        });
-      })
-      .catch((error) => {
-        console.log('API not available, using static data. Error: ' + error);
-        // Fallback to static data if API fails
-        const start = (page - 1) * limit;
-        const end = start + limit;
-        return STATIC_PROJECTS.slice(start, end).map(p => new Project(p));
-      });
   },
 
-  put(project) {
-    // In production, simulate update with static data
-    if (!isDevelopment) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(project);
-        }, 300);
-      });
-    }
-
-    return fetch(`${url}/${project.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(project),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(checkStatus)
-      .then(parseJSON)
-      .catch((error) => {
-        console.log('API not available for update. Error: ' + error);
-        // Return the project as-is in production
-        return project;
-      });
-  },
-
-  find(id) {
-    // In production, use static data
-    if (!isDevelopment) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const project = STATIC_PROJECTS.find(p => p.id === parseInt(id));
-          if (project) {
-            resolve(new Project(project));
-          } else {
-            reject(new Error('Project not found'));
-          }
-        }, 300);
-      });
-    }
-
-    return fetch(`${url}/${id}`)
-      .then(checkStatus)
-      .then(parseJSON)
-      .then(p => new Project(p))
-      .catch((error) => {
-        console.log('API not available, using static data. Error: ' + error);
-        const project = STATIC_PROJECTS.find(p => p.id === parseInt(id));
-        if (project) {
-          return new Project(project);
+  async put(project) {
+    try {
+      const response = await fetch(`${url}/${project.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(project),
+        headers: {
+          'Content-Type': 'application/json'
         }
-        throw new Error('Project not found');
       });
+      if (!response.ok) throw new Error('API not available');
+      return await response.json();
+    } catch (error) {
+      // In production, just return the project (simulated save)
+      console.log('Simulated save:', error.message);
+      return project;
+    }
+  },
+
+  async find(id) {
+    try {
+      const response = await fetch(`${url}/${id}`);
+      if (!response.ok) throw new Error('API not available');
+      const p = await response.json();
+      return new Project(p);
+    } catch (error) {
+      // Fallback to static data
+      console.log('Using static data for find:', error.message);
+      return findStaticProject(id);
+    }
   },
 };
 
